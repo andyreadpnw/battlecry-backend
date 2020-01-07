@@ -16,7 +16,16 @@ class GamesController < ApplicationController
             render json: { error: 'game exist, no save!' }
         end
     end 
-    
+
+    def update
+        game = Game.find(params[:id])
+
+        puts game_params
+        game.update(game_params)
+        # byebug
+        render :json => game
+    end
+
     def destroy
         @game = Game.find(params[:id])
         @game.destroy

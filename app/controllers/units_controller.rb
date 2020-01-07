@@ -15,7 +15,17 @@ class UnitsController < ApplicationController
         else
             render json: { error: 'unit exist, no save!' }
         end
-    end 
+    end
+
+    def update
+
+        unit = Unit.find(params[:id])
+
+        puts unit_params
+        unit.update(unit_params)
+        # byebug
+        render :json => unit
+    end
     
     def destroy
         @unit = Unit.find(params[:id])
